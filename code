@@ -1,0 +1,30 @@
+Chocolate Distribution Problem
+Statement:-
+Given an array of N integers where each value represents the number of chocolates in a packet. Each packet can have a variable number of chocolates. There are m students, the task is to distribute chocolate packets such that: 
+
+Each student gets one packet.
+The difference between the number of chocolates in the packet with maximum chocolates and the packet with minimum chocolates given to the students is minimum.
+Examples:
+
+Input : arr[] = {7, 3, 2, 4, 9, 12, 56} , m = 3 
+Output: Minimum Difference is 2 
+explain :-by taking 3,2,4 packets max=4 and min=2
+          diff=4-2=2
+code:-
+def function(l,n,m):
+    if n==0 or m==0:
+        return 0
+    if n<m:
+        return -1
+    l.sort()
+    mindiff=l[n-1]-l[0]
+    for i in range(n-m+1):
+        mindiff=min(mindiff,(l[i+m-1]-l[i]))
+    return mindiff
+m=int(input())
+l=list(map(int,input().strip().split(" ")))
+print(function(l,len(l),m))
+input:- 3
+        7 3 2 4 9 12 56
+output:-2
+
